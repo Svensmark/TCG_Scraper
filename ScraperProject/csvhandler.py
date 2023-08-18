@@ -4,9 +4,18 @@ import datetime
 import pathvalidate as v
 import os
 
-def writeToCSV(cardName: str, df: pd.DataFrame):
+def writeDictListToCSV(dict_list: list[dict]):
+    for dict in dict_list:
+        key = ""
+        value = ""
+        for i in dict:
+            key = i
+            value = dict[i]
+        writeToCSV(key, value)
+
+def writeToCSV(card_name: str, df: pd.DataFrame):
     print('Writing file to csv ..')
-    filename = "Holdings/PokemonCards/"+cardName+'.csv'
+    filename = "Holdings/PokemonCards/"+card_name+'.csv'
 
 
     if (os.path.isfile(filename)):
@@ -19,7 +28,7 @@ def writeToCSV(cardName: str, df: pd.DataFrame):
     else: 
         print('Creating new file ..')
 
-        df.to_csv("Holdings/PokemonCards/"+v.sanitize_filename(cardName)+'.csv', mode='a', index=False)
+        df.to_csv("Holdings/PokemonCards/"+v.sanitize_filename(card_name)+'.csv', mode='a', index=False)
 
 
 def readNewestDataFromAll(dir_path: str):
