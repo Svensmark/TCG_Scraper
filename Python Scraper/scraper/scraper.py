@@ -21,6 +21,6 @@ def scrapeSoups(url_list: list[str]):
         soup = BeautifulSoup(page_source, "html.parser")
         soups_list.append(soup)
         # Sleep to not get request timedout
-        time.sleep(2)
+        time.sleep(5)
 
     return soups_list

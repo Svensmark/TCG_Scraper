@@ -6,12 +6,15 @@ import os
 
 def writeDictListToCSV(dict_list: list[dict]):
     for dict in dict_list:
-        key = ""
-        value = ""
-        for i in dict:
-            key = i
-            value = dict[i]
-        writeToCSV(key, value)
+        try:
+            key = ""
+            value = ""
+            for i in dict:
+                key = i
+                value = dict[i]
+            writeToCSV(key, value)
+        except:
+            continue
 
 def writeToCSV(card_name: str, df: pd.DataFrame):
     print('Writing file to csv ..')

@@ -9,13 +9,16 @@ def handleSoups(soups_list: list[bs4.BeautifulSoup]) -> list[dict]:
     dict_list = []
     
     for soup in soups_list:
+        try:
     # TODO: Find type af SOUP
     # soupType = getSoupType(soup):
     # if (soupType == PokemonCard)
-        dataframe = pc_getCardPrice(soup)
-        cardName = pc_getCardName(soup)
+            dataframe = pc_getCardPrice(soup)
+            cardName = pc_getCardName(soup)
 
-        dict_list.append({cardName: dataframe})
+            dict_list.append({cardName: dataframe})
+        except: 
+            continue
     # elif (soupType == SealedMagicProduct)
         # etc..
 
